@@ -1,0 +1,7 @@
+/node_modules/*
+/coverage/*
+/production/*
+/public/api-docs/*
+/reports/*
+/tools/*
+/client/src/build
