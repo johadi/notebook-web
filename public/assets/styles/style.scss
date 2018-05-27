@@ -1,0 +1,177 @@
+//************ Landing Page Style *********** Begin
+
+#classicformpage .view {
+  background-image: url('../images/noteshold.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
+#classicformpage .gradient {
+  background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+  background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%));
+  background: linear-gradient(to 45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+}
+
+#classicformpage .card {
+  background-color: rgba(126, 123, 215, 0.2);
+}
+
+#classicformpage h6 {
+  line-height: 1.7;
+}
+
+#classicformpage .navbar {
+  transition: background .5s ease-in-out,padding .5s ease-in-out;
+}
+
+.top-nav-collapse {
+  background: #424f95 !important;
+}
+
+@media (max-width: 768px) {
+  #classicformpage .navbar:not(.top-nav-collapse) {
+    background: #424f95 !important;
+  }
+
+  #classicformpage, #classicformpage .view {
+    min-height: 1000px;
+  }
+}
+
+#classicformpage label {
+  color: #fff!important;
+}
+
+.landing-page-wrapper .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.landing-page-wrapper .nav-pills .nav-link {
+  border-radius: 0;
+}
+
+.landing-page-wrapper .nav-link-text {
+  color: #e6e6e6
+}
+.landing-page-wrapper .form-control {
+  color: #092035
+}
+
+.btn-auth {
+  background-color: #092035 !important;
+}
+// ****************** Landing Page style ************** End
+
+// *****************Noteboard********************* Begin
+.noteboard-wrapper .list-group-item {
+  border-right: 0;
+  border-left: 0;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.noteboard-wrapper .list-group-item h5 {
+  color: #4A4A4A;
+}
+.noteboard-wrapper .list-group-item .note-text {
+  color: #9B9B9B;
+}
+.noteboard-wrapper .list-group-item small {
+  color: #092035;
+}
+
+.new-note-icon {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  bottom: 10vh;
+  right: 5vw;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  vertical-align: center;
+  background-color: #092035;
+  cursor: pointer;
+}
+
+.new-note-icon span {
+   align-self: center;
+}
+
+.bg-note {
+  background-color: #092035 !important;
+}
+//.new-note-modal .modal-title {
+//  background-color: red;
+//  display: flex;
+//  justify-content: space-between;
+//  flex: 1;
+//}
+
+// **** Select ****
+/* ==========  Select Field Variables ========== */
+$color-black: "0,0,0";
+$select-background-color: transparent;
+$select-border-color: unquote("rgba(#{$color-black}, 0.12)") !default;
+$select-font-size: 16px;
+$select-color: unquote("rgba(#{$color-black}, 0.26)") !default;
+$select-padding: 4px;
+
+.new-note-modal select {
+  font-family: inherit;
+  border-radius: 0;
+  background-color: transparent;
+  width: 100%;
+  padding: $select-padding 0;
+  font-size: $select-font-size;
+  border: none;
+  border-bottom: 1px solid $select-border-color;
+}
+
+/* Remove focus */
+.new-note-modal select:focus {
+  outline: none
+}
+
+/* Use custom arrow */
+.new-note-modal .mdl-selectfield select {
+  margin-left: 1.5rem;
+  appearance: none
+}
+.new-note-modal .mdl-selectfield {
+  top: 0.65rem;
+  font-family: 'Roboto','Helvetica','Arial',sans-serif;
+  position: relative;
+  display: flex;
+  flex: 1;
+}
+
+.new-note-modal .select-wrapper i {
+  //margin-right: 0.5em;
+}
+
+.new-note-modal form .text-area {
+  overflow-y: hidden;
+  padding: 0.65rem 0 !important;
+  resize: none;
+}
+
+.new-note-modal form {
+  margin-bottom: 3rem;
+}
+.new-note-modal .modal-head {
+  background-color: #092035;
+}
+.new-note-modal .modal-head .title-text, .new-note-modal .modal-head .close {
+  color: #fff;
+}
