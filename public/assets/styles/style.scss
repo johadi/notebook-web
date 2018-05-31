@@ -169,9 +169,45 @@ $select-padding: 4px;
 .new-note-modal form {
   margin-bottom: 3rem;
 }
-.new-note-modal .modal-head {
+.modal-head {
   background-color: #092035;
-}
-.new-note-modal .modal-head .title-text, .new-note-modal .modal-head .close {
   color: #fff;
+}
+.modal-head .title-text, .modal-head .close {
+  color: #fff;
+}
+
+.text-note {
+  color: #092035
+}
+
+// ***********Edit User Modal ******************
+.img-wrapper {
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+.edit-user-modal .img-inner-wrapper {
+  padding: 0;
+}
+.edit-user-modal .user-avatar {
+  border: 1px solid #092035;
+  width: inherit;
+  height: inherit;
+}
+.edit-user-modal .edit-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 80px;
+  height: 21px;
+  border-bottom: 1px solid #092035;
+  border-right: 1px solid #092035;
+  border-bottom-right-radius: 0.25rem !important;
+}
+
+@media (min-width: 768px) {
+  .edit-user-modal .md-form {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+  }
 }

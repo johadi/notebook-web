@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MaterialTitlePanel from './MaterialTitlePanel';
+import avatar from '../../public/assets/images/jimoh.jpg';
 
 const styles = {
   sidebar: {
-    width: 256,
+    width: 300,
     height: '100%',
   },
-  sidebarLink: {
+  sidebarItem: {
     display: 'block',
-    padding: '16px 0px',
-    color: '#757575',
+    paddingBottom: '5px',
+    color: '#ffffff',
     textDecoration: 'none',
+  },
+  sidebarButton: {
+    marginTop: '10px',
+    color: '#092035',
+    fontWeight: 'bold',
+    padding: '0.6rem 2.14rem'
   },
   divider: {
     margin: '8px 0',
@@ -22,32 +29,43 @@ const styles = {
     // padding: '16px',
     // height: '100%',
     // backgroundColor: '#092035',
-    padding: '16px',
     position: 'absolute',
-    width: 256,
+    width: 300,
     top: 0,
     bottom: 0,
     backgroundColor: '#092035',
+  },
+  image: {
+    width: '130px',
+    height: '130px',
+  },
+  userSection: {
+    marginTop: '100px'
+  },
+  sidebarHeaderText: {
+    fontFamily: 'ComicSansMS-Bold',
+    fontSize: '18px',
+    marginTop: '20px',
+    marginLeft: '50px',
+    letterSpacing: '-0.1px',
+    color: '#fff',
+    textDecoration: 'none',
   },
 };
 
 const SidebarContent = (props) => {
   const style = props.style ? {...styles.sidebar, ...props.style} : styles.sidebar;
 
-  const links = [];
-
-  for (let ind = 0; ind < 5; ind++) {
-    links.push(
-      <a key={ind} href="#" style={styles.sidebarLink}>Mock menu item {ind}</a>);
-  }
-
   return (
-    <MaterialTitlePanel title="lord" style={style}>
+    <MaterialTitlePanel style={style}>
       <div style={styles.content}>
-        <a href="index.html" style={styles.sidebarLink}>Home</a>
-        <a href="responsive_example.html" style={styles.sidebarLink}>Responsive Example</a>
-        <div style={styles.divider} />
-        {links}
+        <p style={styles.sidebarHeaderText}>Notebook</p>
+        <div style={styles.userSection} className="d-flex w-100 flex-column align-items-center">
+          <img style={styles.image} className="rounded-circle text-center" src={avatar} alt="User avatar"/><br/>
+          <strong style={styles.sidebarItem}>Johadi</strong>
+          <strong style={styles.sidebarItem}>Jimoh.hadi@gmail.com</strong>
+          <button className="btn" style={styles.sidebarButton} data-toggle="modal" data-target="#editUserModal">Edit Profile</button>
+        </div>
       </div>
     </MaterialTitlePanel>
   );
@@ -58,3 +76,9 @@ SidebarContent.propTypes = {
 };
 
 export default SidebarContent;
+
+/* Notebook: */
+// font-family: ComicSansMS-Bold;
+// font-size: 30px;
+// color: #FFFFFF;
+// letter-spacing: -0.1px;

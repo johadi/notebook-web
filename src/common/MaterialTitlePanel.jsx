@@ -10,7 +10,6 @@ const styles = {
     backgroundColor: '#092035',
     color: 'white',
     padding: '16px',
-    fontSize: '1.5em',
   },
 };
 
@@ -19,7 +18,7 @@ const MaterialTitlePanel = (props) => {
 
   return (
     <div style={rootStyle}>
-      <div style={styles.header}>{props.title}</div>
+      <div className="text-right pr-4" style={styles.header}><i className="fa fa-sign-out"/> {props.title}</div>
       {props.children}
     </div>
   );

@@ -12,7 +12,7 @@ const styles = {
   },
   content: {
     padding: '16px',
-  },
+  }
 };
 
 const mql = window.matchMedia(`(min-width: 800px)`);
@@ -59,7 +59,7 @@ class PageWrapper extends React.Component {
         {!this.state.docked &&
         <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>
           <i className="fa fa-bars"/></a>}
-        <span> Responsive React Sidebar</span>
+        <span>Logout</span>
       </span>);
 
     const sidebarProps = {

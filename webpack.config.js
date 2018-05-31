@@ -12,7 +12,7 @@ const script = {
   dev: 'build:dev',
   // prod: 'build'
   prod: 'heroku-postbuild',
-  all: 'build:all'
+  all: 'build:prod'
 };
 const PATHS = {
   app: path.join(__dirname, 'src'),
@@ -68,7 +68,7 @@ const common = {
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
       },
       {
         test: /\.(png|jpg|gif)$/,
