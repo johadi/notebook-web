@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import Sidebar from 'react-sidebar';
 import MaterialTitlePanel from './MaterialTitlePanel';
 import SidebarContent from './SidebarContent';
@@ -17,7 +16,7 @@ const styles = {
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
-class PageWrapper extends React.Component {
+class PageWrapper extends Component {
 
   state = {
     mql: mql,

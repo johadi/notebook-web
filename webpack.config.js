@@ -102,7 +102,7 @@ if (TARGET === script.dev || !TARGET) {
       port: process.env.PORT,
       proxy: {
         '/api/**': {
-          target: 'http://localhost:4000',
+          target: 'http://localhost:8000',
           secure: false
         }
       }
