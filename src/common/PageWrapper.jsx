@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Sidebar from 'react-sidebar';
 import MaterialTitlePanel from './MaterialTitlePanel';
 import SidebarContent from './SidebarContent';
+import { logout } from '../actions';
 
 const styles = {
   contentHeaderMenuLink: {
@@ -11,12 +14,15 @@ const styles = {
   },
   content: {
     padding: '16px',
+  },
+  logout: {
+    cursor: 'pointer'
   }
 };
 
 const mql = window.matchMedia(`(min-width: 800px)`);
 
-class PageWrapper extends Component {
+class PageWrapperContainer extends Component {
 
   state = {
     mql: mql,
@@ -27,6 +33,13 @@ class PageWrapper extends Component {
   componentDidMount() {
     mql.addListener(this.mediaQueryChanged);
     this.setState({mql: mql, docked: mql.matches});
+  }
+
+  componentDidUpdate() {
+    const { authState, history } = this.props || {};
+    if (!authState.isAuthenticated) {
+      history.push('/');
+    }
   }
 
   componentWillUnmount() {
@@ -56,9 +69,11 @@ class PageWrapper extends Component {
     const contentHeader = (
       <span>
         {!this.state.docked &&
-        <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>
-          <i className="fa fa-bars"/></a>}
-        <span>Logout</span>
+          <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>
+            <i className="fa fa-bars"/>
+          </a>
+        }
+        <span onClick={this.props.logout} style={styles.logout}><i className="fa fa-sign-out"/> Logout</span>
       </span>);
 
     const sidebarProps = {
@@ -80,4 +95,8 @@ class PageWrapper extends Component {
   }
 }
 
-export { PageWrapper }
+const mapDispatchToProps = dispatch => (bindActionCreators({ logout }, dispatch));
+
+const mapStateToProps = ({ authState }) => ({ authState });
+
+export const PageWrapper = connect(mapStateToProps, mapDispatchToProps)(PageWrapperContainer);

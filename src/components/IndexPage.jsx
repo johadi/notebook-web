@@ -1,30 +1,13 @@
-
-import React from 'react';
+import React, {Component } from 'react';
 import { Navbar, NavbarBrand, Mask, Row, Col, Button, View, Container } from 'mdbreact';
 import { AuthTab } from './auth';
+import { AuthContextProvider } from '../contexts';
 
-class IndexPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      collapse: false
-    };
-    this.onClick = this.onClick.bind(this);
-    this.handleNavbarClick = this.handleNavbarClick.bind(this);
-  }
-
-  onClick() {
-    this.setState({
-      collapse: !this.state.collapse,
-    });
-  }
-
-  handleNavbarClick() {
-    this.setState({
-      collapse: false
-    });
-  }
+class IndexPage extends Component {
   render() {
+    const { location, history, match } = this.props;
+    const routeProps = { location, history, match };
+
     return (
       <div className=" landing-page-wrapper" id="classicformpage">
         <div>
@@ -52,7 +35,7 @@ class IndexPage extends React.Component {
                   <Button outline color="white">Learn More</Button>
                 </div>
                 <Col md="6" xl="5" className="mb-4">
-                  <AuthTab/>
+                  <AuthContextProvider value={routeProps} component={AuthTab}/>
                 </Col>
               </Row>
             </Container>

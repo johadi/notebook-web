@@ -8,12 +8,12 @@ const initialState = {
 export default (state = initialState, { type, payload = {} }) => {
 
   switch (type) {
-    case actionTypes.LOGIN_SUCCESSFUL:
+    case actionTypes.GET_NOTES_SUCCESSFUL:
       return {
         ...state,
         note: payload
       };
-    case actionTypes.LOGIN_UNSUCCESSFUL:
+    case actionTypes.GET_NOTES_UNSUCCESSFUL:
       return {
         ...state,
         noteError: payload

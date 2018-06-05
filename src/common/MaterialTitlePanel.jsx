@@ -18,7 +18,7 @@ const MaterialTitlePanel = (props) => {
 
   return (
     <div style={rootStyle}>
-      <div className="text-right pr-4" style={styles.header}><i className="fa fa-sign-out"/> {props.title}</div>
+      <div className="text-right pr-4" style={styles.header}>{props.title}</div>
       {props.children}
     </div>
   );

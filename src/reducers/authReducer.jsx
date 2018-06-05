@@ -1,15 +1,42 @@
-const initialState = {}
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case 'ADD2':
+import actionTypes from '../actionTypes';
+
+const initialState = {
+  isAuthenticated: false,
+  userDetail: null,
+  authError: null,
+  getUserError: null,
+};
+export default (state = initialState, { type, payload = {} }) => {
+
+  switch (type) {
+    case `${actionTypes.LOGIN}_SUCCESSFUL`:
       return {
         ...state,
-        name: 1
+        isAuthenticated: true,
+        authError: null
       };
-    case 'SUB2':
+    case `${actionTypes.LOGIN}_UNSUCCESSFUL`:
       return {
-        ...state
+        ...state,
+        isAuthenticated: false,
+        authError: payload
       };
+    case `${actionTypes.GET_USER}_SUCCESSFUL`:
+      return {
+        ...state,
+        userDetail: payload,
+        isAuthenticated: true,
+        getUserError: null
+      };
+    case `${actionTypes.GET_USER}_UNSUCCESSFUL`:
+      return {
+        ...state,
+        userDetail: null,
+        isAuthenticated: false,
+        getUserError: payload
+      };
+    case `${actionTypes.LOGOUT}_SUCCESSFUL`:
+      return initialState;
     default:
       return state;
   }

@@ -14,6 +14,7 @@ class NoteboardContainer extends Component {
   };
 
   componentDidMount() {
+    console.log("Note props", this.props);
     this.props.getNotes();
   }
   modalElement = createRef();
@@ -33,9 +34,12 @@ class NoteboardContainer extends Component {
   }
 
   render() {
+    const { location, history, match } = this.props || {};
+    const routeProps = { location, history, match };
+
     return (
       <div>
-        <PageWrapper>
+        <PageWrapper {...routeProps} >
           <LoadingBar scope="board"/>
           <div className="container noteboard-wrapper">
             <div className="list-group">
