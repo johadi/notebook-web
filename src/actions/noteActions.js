@@ -1,17 +1,18 @@
 import { fetch } from './apiRequest';
 import actionTypes from '../actionTypes';
 import axios from 'axios';
-import {apiBaseUrl, checkAndSetAuthorizationHeader } from '../environment';
 
 export const getNotes = () => (dispatch) => {
-  // fetch(
-  //   {
-  //     url: '/login',
-  //     method: 'POST',
-  //     data: { email: 'jimoh.hadi@gmail.com', password: '112233' }
-  //   },
-  //   dispatch,
-  //   actionTypes.LOGIN,
-  //   'board'
-  // );
+  fetch(
+    {
+      url: '/notes',
+      method: 'GET'
+    },
+    {
+      dispatch,
+      actionType: actionTypes.GET_NOTES,
+      loaderScope: 'noteboard',
+      canDispatchResult: true
+    },
+  );
 };

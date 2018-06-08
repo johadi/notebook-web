@@ -4,8 +4,10 @@ export default keymirror({
   ADD: null,
   SUB: null,
   LOGIN: null,
+  REGISTER: null,
   LOGOUT: null,
   GET_USER: null,
-  GET_NOTES_SUCCESSFUL: null,
-  GET_NOTES_UNSUCCESSFUL: null,
+  CLEAR_AUTH_ERROR: null,
+  GET_NOTES: null,
+  CLEAR_NOTES_ERROR: null,
 });

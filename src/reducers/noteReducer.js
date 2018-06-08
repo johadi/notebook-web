@@ -8,15 +8,17 @@ const initialState = {
 export default (state = initialState, { type, payload = {} }) => {
 
   switch (type) {
-    case actionTypes.GET_NOTES_SUCCESSFUL:
+    case `${actionTypes.GET_NOTES}_SUCCESSFUL`:
       return {
         ...state,
-        note: payload
+        isAuthenticated: true,
+        error: null
       };
-    case actionTypes.GET_NOTES_UNSUCCESSFUL:
+    case `${actionTypes.GET_NOTES}_UNSUCCESSFUL`:
       return {
         ...state,
-        noteError: payload
+        isAuthenticated: false,
+        error: payload
       };
     default:
       return state;

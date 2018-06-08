@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'mdbreact/dist/css/mdb.css';
+import 'react-toastify/dist/ReactToastify.css';
 import '../public/assets/styles/style.scss';
 import { store } from './store';
 import App from './components/App';

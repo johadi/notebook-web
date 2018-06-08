@@ -211,3 +211,21 @@ $select-padding: 4px;
     margin-right: 30px !important;
   }
 }
+
+.login-input {
+  border-bottom: solid 1px red !important;
+}
+.login-input:focus {
+  border-bottom: solid 1px #4285f4 !important;
+}
+
+.register-input {
+  border-bottom: solid 1px red !important;
+}
+.register-input:focus {
+  border-bottom: solid 1px #4285f4 !important;
+}
+
+.bg-error {
+  background-color: #ffe6f0;
+}

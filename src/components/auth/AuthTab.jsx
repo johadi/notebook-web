@@ -5,7 +5,7 @@ import { SignupTabContent } from './SignupTabContent';
 
 export const AuthTab = () => (
   <Card id="classic-card">
-    <CardBody className="z-depth-2 white-text">
+    <CardBody className="z-depth-2 white-text" style={{ overflowY: 'auto', maxHeight: '80vh' }}>
       <nav className="z-depth-1-half mb-3">
         <div className="nav nav-pills" id="nav-tab" role="tablist">
           <a className="nav-link-text nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"

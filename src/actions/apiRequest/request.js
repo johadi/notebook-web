@@ -47,11 +47,9 @@ const fetch = async (
       dispatch,
       `${actionType}_UNSUCCESSFUL`,
       {
-        error: {
-          data: errorData,
-          status: err.response.status,
-          action: actionType
-        }
+        data: errorData,
+        status: err.response.status,
+        action: actionType
       }
     );
   }
