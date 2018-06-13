@@ -191,8 +191,8 @@ $select-padding: 4px;
 }
 .edit-user-modal .user-avatar {
   border: 1px solid #092035;
-  width: inherit !important;
-  height: inherit !important;
+  width: 166px !important;
+  height: 166px !important;
 }
 .edit-user-modal .edit-icon {
   position: absolute;
@@ -228,4 +228,16 @@ $select-padding: 4px;
 
 .bg-error {
   background-color: #ffe6f0;
+}
+
+.noteboard-head {
+  padding-bottom: 8px;
+  border-bottom: 1px #092035 solid
+}
+.noteboard-wrapper  a:first-child {
+  border-top: none;
+}
+
+.noteboard-wrapper  a:last-child {
+  border-bottom: none;
 }

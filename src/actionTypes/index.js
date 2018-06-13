@@ -9,5 +9,11 @@ export default keymirror({
   GET_USER: null,
   CLEAR_AUTH_ERROR: null,
   GET_NOTES: null,
+  CLEAR_NOTE_ERROR: null,
+  SAVE_NOTE: null,
+  UPDATE_NOTE: null,
+  DELETE_NOTE: null,
+  UPDATE_USER: null,
+  FETCHING_NOTES: null,
   CLEAR_NOTES_ERROR: null,
 });

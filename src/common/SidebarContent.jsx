@@ -55,15 +55,16 @@ const styles = {
 
 const SidebarContent = (props) => {
   const style = props.style ? {...styles.sidebar, ...props.style} : styles.sidebar;
+  const { username, email, avatar_path } = props.userDetail;
 
   return (
     <MaterialTitlePanel style={style}>
       <div style={styles.content}>
         <p style={styles.sidebarHeaderText}>Notebook</p>
         <div style={styles.userSection} className="d-flex w-100 flex-column align-items-center">
-          <img style={styles.image} className="rounded-circle text-center" src={avatar} alt="User avatar"/><br/>
-          <strong style={styles.sidebarItem}>Johadi</strong>
-          <strong style={styles.sidebarItem}>Jimoh.hadi@gmail.com</strong>
+          <img style={styles.image} className="rounded-circle text-center" src={avatar_path} alt="User avatar"/><br/>
+          <strong style={styles.sidebarItem}>{username}</strong>
+          <strong style={styles.sidebarItem}>{email}</strong>
           <button className="btn" style={styles.sidebarButton} data-toggle="modal" data-target="#editUserModal">Edit Profile</button>
         </div>
       </div>

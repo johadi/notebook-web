@@ -66,18 +66,21 @@ class PageWrapperContainer extends Component {
   }
 
   render() {
+    const { userDetail } = this.props.authState;
     const contentHeader = (
-      <span>
+      <div className="p-0 m-0 d-flex justify-content-between d-md-block text-md-right">
         {!this.state.docked &&
-          <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>
-            <i className="fa fa-bars"/>
-          </a>
+          <p className="p-0 m-0">
+            <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>
+              <i className="fa fa-bars"/>
+            </a>
+          </p>
         }
-        <span onClick={this.props.logout} style={styles.logout}><i className="fa fa-sign-out"/> Logout</span>
-      </span>);
+        <p className="p-0 m-0" onClick={this.props.logout} style={styles.logout}><i className="fa fa-sign-out"/> Logout</p>
+      </div>);
 
     const sidebarProps = {
-      sidebar: <SidebarContent/>,
+      sidebar: <SidebarContent userDetail={userDetail}/>,
       docked: this.state.docked,
       open: this.state.open,
       onSetOpen: this.onSetOpen,
@@ -85,7 +88,7 @@ class PageWrapperContainer extends Component {
 
     return (
       <Sidebar {...sidebarProps}>
-        <MaterialTitlePanel title={contentHeader}>
+        <MaterialTitlePanel isLogout={true} title={contentHeader}>
           <div style={styles.content}>
             {this.props.children}
           </div>

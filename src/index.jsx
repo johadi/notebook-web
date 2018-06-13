@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'mdbreact/dist/css/mdb.css';
 import 'react-toastify/dist/ReactToastify.css';
 import '../public/assets/styles/style.scss';
+import '../public/assets/font-awesome/css/font-awesome.css';
 import { store } from './store';
 import App from './components/App';
 
