@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ModalWrapper from './ModalWrapper';
-import avatar from '../../../public/assets/images/jimoh.jpg';
+import avatar from '../../../public/assets/images/placeholder.png';
 import editIcon from '../../../public/assets/images/imageediticon.png';
 import { updateUser, clearNoteError } from '../../actions';
 
@@ -52,7 +52,7 @@ class EditUserModalContainer extends Component {
           <div className="edit-user-modal modal-body">
             <div className="row img-wrapper">
               <div className="col-4 offset-4 text-center img-inner-wrapper">
-                <img ref={this.avatarImage} className="user-avatar rounded" src={avatar_path}
+                <img ref={this.avatarImage} className="user-avatar rounded" src={ avatar_path ? avatar_path : avatar }
                      alt="User profile"/>
                 <img onClick={() => this.avatarInput.current.click()} className="edit-icon"
                      src={editIcon} alt="Edit image icon"/>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MaterialTitlePanel from './MaterialTitlePanel';
-import avatar from '../../public/assets/images/jimoh.jpg';
+import avatar from '../../public/assets/images/placeholder.png';
 
 const styles = {
   sidebar: {
@@ -62,7 +62,7 @@ const SidebarContent = (props) => {
       <div style={styles.content}>
         <p style={styles.sidebarHeaderText}>Notebook</p>
         <div style={styles.userSection} className="d-flex w-100 flex-column align-items-center">
-          <img style={styles.image} className="rounded-circle text-center" src={avatar_path} alt="User avatar"/><br/>
+          <img style={styles.image} className="rounded-circle text-center" src={ avatar_path ? avatar_path : avatar } alt="User avatar"/><br/>
           <strong style={styles.sidebarItem}>{username}</strong>
           <strong style={styles.sidebarItem}>{email}</strong>
           <button className="btn" style={styles.sidebarButton} data-toggle="modal" data-target="#editUserModal">Edit Profile</button>

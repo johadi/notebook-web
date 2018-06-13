@@ -25,10 +25,6 @@ const fetch = async (
     }
 
     if (canDispatchResult) {
-      if (extraData && typeof extraData !== 'object') {
-        console.error('extraData value can only be of type object with key-value pairs');
-      }
-
       if (extraData) {
         dispatchResult(
           dispatch,

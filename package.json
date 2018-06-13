@@ -9,7 +9,7 @@
     "clean-dist": "rm -rf ./dist && mkdir -p ./dist",
     "copy-to-dist": "cp -r ./public/* ./dist/",
     "set-dist": "npm run clean-dist && npm run copy-to-dist",
-    "build:prod": "npm run set-dist && webpack --mode production && node server.js",
+    "build:prod": "export NODE_ENV=production && npm run set-dist && webpack --mode production && node server.js",
     "build:dev": "npm run set-dist && webpack-dev-server --config ./webpack.config.dev.js --mode development",
     "heroku-prebuild": "npm run set-dist",
     "heroku-postbuild": "webpack --mode production",
