@@ -1,1 +1,1 @@
-web: node tools/buildTools/buildServer.js
+web: node server.js
