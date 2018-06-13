@@ -43,7 +43,6 @@ const fetch = async (
     // We always return the success result as promise to the user
     return Promise.resolve(response);
   } catch (err) {
-    console.log('==========RRRRRR', err);
     let errorData = err.response.data;
 
     if (err.response.status === 500) {
