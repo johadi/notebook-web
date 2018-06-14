@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import ModalWrapper from './ModalWrapper';
 import avatar from '../../../public/assets/images/placeholder.png';
 import editIcon from '../../../public/assets/images/imageediticon.png';
-import { updateUser, clearNoteError } from '../../actions';
+import { updateUser, clearUserError } from '../../actions';
+import actionTypes from '../../actionTypes';
 
 class EditUserModalContainer extends Component {
   state = {
@@ -15,6 +16,30 @@ class EditUserModalContainer extends Component {
       username: ''
     }
   };
+
+  toastId = null;
+
+  componentDidMount() {
+    const { userDetails } = this.state;
+    userDetails.username = this.props.authState.userDetail.username;
+    this.setState({ userDetails });
+  }
+
+  componentDidUpdate() {
+    const { userState, clearUserError, authState } = this.props;
+
+    if (userState.userIsUpdated && !toast.isActive(this.toastId)) {
+      this.toastId = toast.success('Your details has been updated!', {
+        onOpen: () => {
+          const { userDetails } = this.state;
+          userDetails.username = authState.userDetail.username;
+          userDetails.avatar = '';
+          this.setState({ userDetails });
+          clearUserError();
+        }
+      });
+    }
+  }
 
   avatarInput = createRef();
   avatarImage = createRef();
@@ -36,19 +61,40 @@ class EditUserModalContainer extends Component {
   };
 
   handleSubmit = (event) => {
+    const { userDetail } = this.props.authState;
     event.preventDefault();
     const { username, avatar } = this.state.userDetails;
     const formData = new FormData();
     formData.append('username', username);
     formData.append('avatar', avatar);
-    this.props.updateUser(formData);
+
+    if (username.toLowerCase() !== userDetail.username.toLowerCase() || avatar) {
+      this.props.updateUser(formData);
+    }
   };
 
+  showToast({ data, status, action }) {
+    if (!toast.isActive(this.toastId) && action === actionTypes.UPDATE_USER) {
+      let message = (typeof data === 'object' && status === 500) ? 'Server error! Try again' : data;
+
+      if (typeof data === 'object' && status === 400) {
+        message = 'Invalid image! Ensure image size is not more than 10MB and the format is in png/jpg/jpeg.';
+      }
+
+      this.toastId = toast.error(message, {
+        onClose: this.props.clearUserError
+      });
+    }
+  }
+
   render() {
-    const { username, avatar_path } = this.props.authState.userDetail;
+    const { authState, userState } = this.props;
+    const { userError } = userState;
+    const { avatar_path } = authState.userDetail;
     return (
       <ModalWrapper title="Edit User" modalId="editUserModal">
         <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+          { userError ? this.showToast(userError) : null }
           <div className="edit-user-modal modal-body">
             <div className="row img-wrapper">
               <div className="col-4 offset-4 text-center img-inner-wrapper">
@@ -64,7 +110,7 @@ class EditUserModalContainer extends Component {
               onChange={this.handleChange}
               name="username"
               className="username-field"
-              value={!this.state.userDetails.username ? username : this.state.userDetails.username}
+              value={this.state.userDetails.username}
               label="Type New Username" icon="user"
               group type="text" validate error="wrong" success="right"/>
           </div>
@@ -78,7 +124,7 @@ class EditUserModalContainer extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => (bindActionCreators({ updateUser, clearNoteError }, dispatch));
+const mapDispatchToProps = dispatch => (bindActionCreators({ updateUser, clearUserError }, dispatch));
 
 const mapStateToProps = ({ authState, loadingBar, userState }) => ({
   authState, loadingBar, userState

@@ -19,3 +19,5 @@ export const updateUser = userDetails => (dispatch) => {
     })
   );
 }
+
+export const clearUserError = () => dispatch => dispatch({ type: actionTypes.CLEAR_USER_ERROR });

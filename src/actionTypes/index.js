@@ -14,6 +14,7 @@ export default keymirror({
   UPDATE_NOTE: null,
   DELETE_NOTE: null,
   UPDATE_USER: null,
+  CLEAR_USER_ERROR: null,
   FETCHING_NOTES: null,
   CLEAR_NOTES_ERROR: null,
 });

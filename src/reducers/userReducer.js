@@ -19,6 +19,12 @@ export default (state = initialState, { type, payload = {}}) => {
         userError: payload,
         userIsUpdated: false
       };
+    case actionTypes.CLEAR_USER_ERROR:
+      return {
+        ...state,
+        userError: null,
+        userIsUpdated: false
+      };
     case `${actionTypes.LOGOUT}_SUCCESSFUL`:
       return initialState;
     default:
