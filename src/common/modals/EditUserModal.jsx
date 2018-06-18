@@ -63,12 +63,21 @@ class EditUserModalContainer extends Component {
   handleSubmit = (event) => {
     const { userDetail } = this.props.authState;
     event.preventDefault();
-    const { username, avatar } = this.state.userDetails;
+    const { username, avatar: stateAvatar } = this.state.userDetails;
+
+    if (stateAvatar) {
+      const size = stateAvatar.size / 1000;
+      if (size > 2000) {
+        this.toastId = toast.error('File size must not be larger than 2MB.');
+        return;
+      }
+    }
+
     const formData = new FormData();
     formData.append('username', username);
-    formData.append('avatar', avatar);
+    formData.append('avatar', stateAvatar);
 
-    if (username.toLowerCase() !== userDetail.username.toLowerCase() || avatar) {
+    if (username.toLowerCase() !== userDetail.username.toLowerCase() || stateAvatar) {
       this.props.updateUser(formData);
     }
   };
@@ -78,7 +87,7 @@ class EditUserModalContainer extends Component {
       let message = (typeof data === 'object' && status === 500) ? 'Server error! Try again' : data;
 
       if (typeof data === 'object' && status === 400) {
-        message = 'Invalid image! Ensure image size is not more than 10MB and the format is in png/jpg/jpeg.';
+        message = 'Invalid image! Ensure image size is not more than 2MB and the format is in png/jpg/jpeg.';
       }
 
       this.toastId = toast.error(message, {
@@ -97,10 +106,10 @@ class EditUserModalContainer extends Component {
           { userError ? this.showToast(userError) : null }
           <div className="edit-user-modal modal-body">
             <div className="row img-wrapper">
-              <div className="col-4 offset-4 text-center img-inner-wrapper">
+              <div onClick={() => this.avatarInput.current.click()} className="col-4 offset-4 text-center img-inner-wrapper">
                 <img ref={this.avatarImage} className="user-avatar rounded" src={ avatar_path ? avatar_path : avatar }
                      alt="User profile"/>
-                <img onClick={() => this.avatarInput.current.click()} className="edit-icon"
+                <img className="edit-icon"
                      src={editIcon} alt="Edit image icon"/>
               </div>
             </div>
