@@ -58,7 +58,7 @@ class PageWrapperContainer extends Component {
   }
 
   toggleOpen = (ev) => {
-    this.setState({open: !this.state.open});
+    this.setState({ open: !this.state.open });
 
     if (ev) {
       ev.preventDefault();

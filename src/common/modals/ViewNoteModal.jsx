@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import { toast } from 'react-toastify';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import ReduxSweetAlert ,{ close, swal } from 'react-redux-sweetalert';
 import { deleteNote, clearNoteError } from '../../actions';
 import ModalWrapper from './ModalWrapper';
 import actionTypes from '../../actionTypes';
@@ -17,6 +18,7 @@ class ViewNoteModalContainer extends Component {
       this.toastId = toast.success('Your note has been deleted!', {
         onOpen: () => {
           clearNoteError();
+          this.props.close();
           this.cancelButton.current.click();
         }
       });
@@ -36,6 +38,18 @@ class ViewNoteModalContainer extends Component {
     }
   }
 
+  showSwal = () => {
+    this.props.swal({
+      title: 'DELETE',
+      text: 'This note will be deleted',
+      showCancelButton: true,
+      closeOnConfirm: false,
+      showLoaderOnConfirm: true,
+      confirmButtonColor: 'red',
+      onConfirm: this.handleDelete
+    });
+  }
+
   render() {
     const { note, noteState } = this.props;
     const { noteError } = noteState;
@@ -52,17 +66,18 @@ class ViewNoteModalContainer extends Component {
         </div>
         <div className="modal-footer">
           <button ref={this.cancelButton} style={{ display: 'none' }} data-dismiss="modal"/>
-          <button type="button" onClick={this.handleDelete} className="btn btn-danger">Delete Note</button>
+          <button type="button" onClick={this.showSwal} className="btn btn-danger">Delete Note</button>
           <button data-toggle="modal" data-target="#editNoteModal" type="button"
                   className="btn btn-primary bg-note">Edit Note
           </button>
         </div>
+        <ReduxSweetAlert/>
       </ModalWrapper>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => (bindActionCreators({ deleteNote, clearNoteError }, dispatch));
+const mapDispatchToProps = dispatch => (bindActionCreators({ deleteNote, clearNoteError, close, swal }, dispatch));
 
 const mapStateToProps = ({ noteState, loadingBar }) => ({
   noteState, loadingBar
