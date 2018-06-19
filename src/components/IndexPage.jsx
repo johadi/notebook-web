@@ -25,14 +25,13 @@ class IndexPage extends Component {
             <Container className="pt-5">
               <Row className="pt-4">
                 <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
-                  <h5 className="h1-responsive font-weight-bold">Write down your note</h5>
+                  <h5 className="h5-responsive font-weight-bold">Do not procrastinate in writing down notes </h5>
                   <hr className="hr-light"/>
                   <h6 className="mb-4">
-                    Everyone likes to write down a note. Keep your note safe by writing one now
-                    and access it anywhere anytime. Have your notes in your hands by downloading
-                    our iOS or Android App to seamlessly manage them.
+                    Ideas can come up anytime, anywhere. Do not hesitate to write it down. with
+                    <strong> Notebook,</strong> you can write down your notes and access
+                    them anywhere, anytime.
                   </h6>
-                  <Button outline color="white">Learn More</Button>
                 </div>
                 <Col md="6" xl="5" className="mb-4">
                   <AuthContextProvider value={routeProps} component={AuthTab}/>
