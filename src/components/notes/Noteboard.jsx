@@ -1,4 +1,4 @@
-import React, { createRef, Component } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Spinner from 'react-spinkit';
@@ -11,13 +11,6 @@ class NoteboardContainer extends Component {
 
   state = {
     currentNote: {}
-  };
-
-  onOpen = (e) => {
-    // this.modalElement.current.setAttribute('aria-hidden', 'true');
-    // this.modalElement.current.classList.remove('show');
-    // this.modalElement.current.style.display = 'none';
-    // this.modalCancelButton.current.click();
   };
 
   toggle = (modalType) => {
@@ -55,7 +48,9 @@ class NoteboardContainer extends Component {
   }
 
   render() {
-    const { location, history, match, noteState } = this.props || {};
+    const {
+      location, history, match, noteState
+    } = this.props || {};
     const routeProps = {
       location,
       history,
@@ -70,7 +65,7 @@ class NoteboardContainer extends Component {
       <a key={note.id} data-toggle="modal" onClick={() => this.showNote(note)} href="#viewNoteModal"
          className="list-group-item list-group-item-action flex-column align-items-start">
         <h5 className="mb-1">{note.title}</h5>
-        <p className="mb-1 note-text">{note.body}</p>
+        <p className="mb-1 note-text text-truncate">{note.body}</p>
         <div className="d-flex w-100 justify-content-between">
           <small className="text-muted">{note.category}</small>
           <small className="text-muted">{note.updated_at}</small>
